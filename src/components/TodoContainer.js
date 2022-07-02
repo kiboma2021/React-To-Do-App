@@ -21,11 +21,14 @@ class ToDoContainer extends React.Component {
       }
     ]
   };
+  handleChange = (id) => {
+    console.log("Clicked", id)
+  }
   render() {
     return (
       <div>
         <Header />
-        <ToDoList todos = {this.state.todos} />
+        <ToDoList todos = {this.state.todos} handleChangeProps={this.handleChange} />
       </div>
     )
   }
