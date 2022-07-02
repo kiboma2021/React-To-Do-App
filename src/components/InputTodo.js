@@ -13,7 +13,10 @@ class InputToDo extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log(this.state.title);
+    this.props.addToDoProps(this.state.title);
+    this.setState ({
+      title: ""
+    });
   }
   render() {
     return (
