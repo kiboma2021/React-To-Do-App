@@ -21,8 +21,18 @@ class ToDoContainer extends React.Component {
       }
     ]
   };
-  handleChange = (id) => {
-    console.log("Clicked", id)
+  handleChange = id => {
+    this.setState({
+      todos: this.state.todos.map (
+        todo => {
+          if(todo.id === id) {
+            todo.completed = !todo.completed;
+          }
+          return todo;
+        }
+      )
+    })
+   // console.log("Clicked", id)
   }
   render() {
     return (
