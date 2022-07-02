@@ -13,11 +13,18 @@ class InputToDo extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.addToDoProps(this.state.title);
-    this.setState ({
-      title: ""
-    });
+    if (this.state.title.trim()){
+      this.props.addToDoProps(this.state.title);
+      this.setState ({
+        title: ""
+      });
+    }
+    else
+    {
+      alert ("Please insert to do item...")
+    }
   }
+
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
