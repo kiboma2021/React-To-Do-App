@@ -2,45 +2,41 @@ import React, { useState } from "react";
 
 const InputToDo = () => {
   const [inputText, setInputText] = useState({
-    fName: "",
-    lastName: "",
+    title: "",
   })
-  const onChange = e => {
+  const onChange = e => { 
     setInputText({
       ...inputText,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     })
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log("Submited...")
+    if (inputText.title.trim()){
+      props.addToDoProps(inputText.title);
+      setInputText ({
+        title: ""
+      });
+    }
+    else
+    {
+      alert ("Please insert to do item...")
+    }
   }
 
   return (
-    <>
-      <form onSubmit={handleSubmit} className="form-container">
-        <input
-          type="text"
-          className="input-text"
-          placeholder="Add first name"
-          value={inputText.fName}
-          name="fName"
-          onChange={onChange}
+    <form onSubmit={handleSubmit} className="form-container">
+      <input
+        type='text'
+        placeholder="Add to do ..."
+        name="title"
+        className="input-text"
+        value={inputText.title}
+        onChange={onChange}
         />
-        <input
-          type='text'
-          placeholder="Add Last Name"
-          name="lastName"
-          className="input-text"
-          value={inputText.lastName}
-          onChange={onChange}
-          />
-        <button className="input-submit">Submit</button>
-      </form>
-      <h2>{inputText.fName}</h2>
-      <h2>{inputText.lastName}</h2>
-    </>
+      <button className="input-submit">Submit</button>
+    </form>
   )
 }
 
