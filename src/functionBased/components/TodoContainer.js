@@ -6,10 +6,7 @@ import { v4 as uuidv4 } from "uuid";
 
 class ToDoContainer extends React.Component {
   state = {
-    todos: [
-
-
-    ]
+    todos: []
   };
   handleChange = id => {
     this.setState(prevState => ({
