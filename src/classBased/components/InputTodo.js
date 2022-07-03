@@ -1,45 +1,47 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 
-class InputToDo extends Component {
-  state = {
-    title: ""
-  };
-
-  onChange = e => {
-    this.setState({
-      [e.target.name]: e.target.value
+const InputToDo = () => {
+  const [inputText, setInputText] = useState({
+    fName: "",
+    lastName: "",
+  })
+  const onChange = e => {
+    setInputText({
+      ...inputText,
+      [e.target.name]: e.target.value,
     })
   };
 
-  handleSubmit = e => {
+  const handleSubmit = e => {
     e.preventDefault();
-    if (this.state.title.trim()){
-      this.props.addToDoProps(this.state.title);
-      this.setState ({
-        title: ""
-      });
-    }
-    else
-    {
-      alert ("Please insert to do item...")
-    }
+    console.log("Submited...")
   }
 
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit} className="form-container">
+  return (
+    <>
+      <form onSubmit={handleSubmit} className="form-container">
         <input
-         type='text'
-         placeholder="Add to do ..."
-         name="title"
-         className="input-text"
-         value={this.state.title}
-         onChange={this.onChange}
-         />
+          type="text"
+          className="input-text"
+          placeholder="Add first name"
+          value={inputText.fName}
+          name="fName"
+          onChange={onChange}
+        />
+        <input
+          type='text'
+          placeholder="Add Last Name"
+          name="lastName"
+          className="input-text"
+          value={inputText.lastName}
+          onChange={onChange}
+          />
         <button className="input-submit">Submit</button>
       </form>
-    )
-  }
+      <h2>{inputText.fName}</h2>
+      <h2>{inputText.lastName}</h2>
+    </>
+  )
 }
 
 export default InputToDo;
