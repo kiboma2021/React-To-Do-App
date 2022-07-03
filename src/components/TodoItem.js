@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./TodoItem.module.css"
+import "../App.css"
 class TodoItem extends React.Component {
   state = {
     editing: false,
@@ -18,11 +19,18 @@ class TodoItem extends React.Component {
     }
     const { completed, id, title } = this.props.todo
 
-    
+    let viewMode = {};
+    let editMode = {};
+
+    if(this.state.editing) {
+      viewMode.display = "none"
+    } else {
+      editMode.display = "none"
+    }
 
     return (
       <li className={styles.item}>
-        <div onDoubleClick={this.handleEditting}>
+        <div onDoubleClick={this.handleEditting} style={viewMode} >
           <input 
             type='checkbox'
             className={styles.checkbox}
@@ -36,7 +44,11 @@ class TodoItem extends React.Component {
               {title}
           </span>
         </div>
-        <input type="text" className={styles.textInput} />
+        <input type="text" style={editMode} className="text-input" value={title}
+        onChange={e => {
+          this.props.setUpdate(e.target.value, id)
+        }}
+        />
       </li>
     )
   }
