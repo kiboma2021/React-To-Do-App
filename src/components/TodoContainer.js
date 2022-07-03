@@ -60,9 +60,9 @@ class ToDoContainer extends React.Component {
   }
 
   componentDidMount() {
-    fetch("https://jsonplaceholder.typicode.com/todos?_limit=10")
+    fetch("https://jsonplaceholder.typicode.com/todos?_limit=20")
     .then(response => response.json())
-    .then(data => console.log(data));
+    .then(data => this.setState({todos: data}));
   }
 
   render() {
