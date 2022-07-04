@@ -8,8 +8,9 @@ const ToDoContainer = () => {
   const [todos, setTodos] =useState([])
 
   useEffect (() => {
-    console.log("Test run")
-  })
+    console.log("Test run ...")
+  },[]);
+
   const handleChange = id => {
     setTodos(prevState => prevState.map (
         todo => {
