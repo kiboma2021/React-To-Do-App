@@ -8,8 +8,19 @@ const ToDoContainer = () => {
   const [todos, setTodos] =useState([])
 
   useEffect (() => {
-    console.log("Test run ...")
-  },[]);
+    // getting stored items
+    const temp = localStorage.getItem("todos")
+    const loadedTodos= JSON.parse(temp)
+    if(loadedTodos) {
+      setTodos(loadedTodos)
+    }
+  },[setTodos]);
+
+  useEffect (() => {
+    //storing to do items
+    const temp = JSON.stringify(todos)
+    localStorage.setItem("todos", temp)
+  }, [todos])
 
   const handleChange = id => {
     setTodos(prevState => prevState.map (
