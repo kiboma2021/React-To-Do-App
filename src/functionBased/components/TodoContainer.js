@@ -38,7 +38,7 @@ const ToDoContainer = () => {
 
   const delToDo = id => {
     setTodos([
-        ...this.state.todos.filter(todo => {
+        ...todos.filter(todo => {
           return todo.id !==id;
         })
       ])
