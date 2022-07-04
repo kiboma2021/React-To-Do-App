@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "./TodoItem.module.css"
 import "../App.css"
+import { FaTrash } from "react-icons/fa"
 
 const TodoItem = props => {
   const [editing, setEditing] = useState(false)
@@ -48,7 +49,7 @@ const TodoItem = props => {
           onChange={() => props.handleChangeProps(id)} 
         /> 
         <button onClick={() => props.delToDoProps(id) }>
-          Delete
+          <FaTrash />
         </button>
         <span style={completed ? completedStyle : null}>
             {title}
