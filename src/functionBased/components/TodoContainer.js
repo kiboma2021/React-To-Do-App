@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ToDoList from "./TodosList";
 import Header from "./Header";
 import InputToDo from "./InputTodo";
@@ -7,6 +7,9 @@ import { v4 as uuidv4 } from "uuid";
 const ToDoContainer = () => {
   const [todos, setTodos] =useState([])
 
+  useEffect (() => {
+    console.log("Test run")
+  })
   const handleChange = id => {
     setTodos(prevState => prevState.map (
         todo => {
