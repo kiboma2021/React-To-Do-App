@@ -1,9 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./TodoItem.module.css"
 import "../App.css"
 
-const TodoItem = () => {
+const TodoItem = props => {
   const [editing, setEditing] = useState(false)
+
+  useEffect (() => {
+    return () => {
+      console.log("Cleaning up ...")
+    }
+  },[])
 
   const handleEditting = () => {
     setEditing (true)
@@ -15,33 +21,33 @@ const TodoItem = () => {
     }
   }
 
-    const completedStyle = {
-      fontStyle: "italic",
-      color: "#595959",
-      opacity: 0.4,
-      textDecoration: "line-through",
-    }
-    const { completed, id, title } = this.props.todo
+  const completedStyle = {
+    fontStyle: "italic",
+    color: "#595959",
+    opacity: 0.4,
+    textDecoration: "line-through",
+  }
+  const { completed, id, title } = props.todo
 
-    let viewMode = {};
-    let editMode = {};
+  let viewMode = {};
+  let editMode = {};
 
-    if(this.state.editing) {
-      viewMode.display = "none"
-    } else {
-      editMode.display = "none"
-    }
+  if(editing) {
+    viewMode.display = "none"
+  } else {
+    editMode.display = "none"
+  }
 
   return (
     <li className={styles.item}>
-      <div onDoubleClick={this.handleEditting} style={viewMode} >
+      <div onDoubleClick={handleEditting} style={viewMode} >
         <input 
           type='checkbox'
           className={styles.checkbox}
           checked={completed} 
-          onChange={() => this.props.handleChangeProps(id)} 
+          onChange={() => props.handleChangeProps(id)} 
         /> 
-        <button onClick={() => this.props.delToDoProps(id) }>
+        <button onClick={() => props.delToDoProps(id) }>
           Delete
         </button>
         <span style={completed ? completedStyle : null}>
@@ -50,9 +56,9 @@ const TodoItem = () => {
       </div>
       <input type="text" style={editMode} className="text-input" value={title}
       onChange={e => {
-        this.props.setUpdate(e.target.value, id)
+        props.setUpdate(e.target.value, id)
       }}
-      onKeyDown={this.handleUpdatedDone}
+      onKeyDown={handleUpdatedDone}
       />
     </li>
   )
