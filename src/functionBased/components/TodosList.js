@@ -1,22 +1,22 @@
-import React from "react";
-import TodoItem from "./TodoItem";
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
+import React from 'react';
+import TodoItem from './TodoItem';
 
-const ToDoList = props => {
-  return (
-    <ul>
-      {props.todos.map(
-        todo => (
+const ToDoList = (props) => (
+  <ul>
+    {props.todos.map(
+      (todo) => (
         <TodoItem
           key={todo.id}
           todo={todo}
-          handleChangeProps={props.handleChangeProps} 
+          handleChangeProps={props.handleChangeProps}
           delToDoProps={props.delToDoProps}
           setUpdate={props.setUpdate}
         />
-        )
-      )}
-    </ul>
-  )
-}
+      ),
+    )}
+  </ul>
+);
 
 export default ToDoList;
