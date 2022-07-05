@@ -3,7 +3,6 @@ import ToDoList from "./TodosList";
 import Header from "./Header";
 import InputToDo from "./InputTodo";
 import { v4 as uuidv4 } from "uuid";
-import { Route, Switch } from "react-router-dom"
 
 const ToDoContainer = () => {
   const [todos, setTodos] =useState([])
