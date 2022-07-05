@@ -3,16 +3,12 @@
 "To do App" is a website for adding tasks. It is a Single Page App (SPA) that allows users to:
 
   Add to do tasks.
-  Read a random math-related quote.
-
+  Mark completed tasks.
+  Delete tasks.
 
 ## Built With
 
 - React
-
-## Live Demo
-
-[Live Demo Link](https://kiboma2021.github.io/Math-Magicians/)
 
 ## Getting Started
 
